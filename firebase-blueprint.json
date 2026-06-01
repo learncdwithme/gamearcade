@@ -1,0 +1,42 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Public and private profile data for registered users",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The unique user ID matching Firebase Auth uid" },
+        "displayName": { "type": "string", "description": "Display name of the user" },
+        "email": { "type": "string", "format": "email", "description": "Email address of the user" },
+        "createdAt": { "type": "string", "description": "ISO timestamp of user registration" },
+        "lastLoginAt": { "type": "string", "description": "ISO timestamp of last login" }
+      },
+      "required": ["userId", "displayName", "email", "createdAt"]
+    },
+    "GameLog": {
+      "title": "Game Completion Log",
+      "description": "Log of a game played and completed by players",
+      "type": "object",
+      "properties": {
+        "logId": { "type": "string", "description": "UUID of the log record" },
+        "userId": { "type": "string", "description": "ID of the user who played" },
+        "userEmail": { "type": "string", "format": "email", "description": "Email of the player" },
+        "gameName": { "type": "string", "description": "Name of the game (e.g., tictactoe, ludo)" },
+        "roomId": { "type": "string", "description": "ID of the room where the game was played" },
+        "outcome": { "type": "string", "description": "Outcome of the game for this player (won/lost/draw)" },
+        "createdAt": { "type": "string", "description": "Server timestamp of completion" }
+      },
+      "required": ["logId", "userId", "gameName", "roomId", "outcome", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Stores user profile information keyed by auth uid"
+    },
+    "/gameLogs/{logId}": {
+      "schema": "GameLog",
+      "description": "Historical log of completed games"
+    }
+  }
+}

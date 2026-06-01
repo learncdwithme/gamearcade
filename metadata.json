@@ -1,0 +1,6 @@
+{
+  "name": "GameHub",
+  "description": "A high-performance progressive web app (PWA) board game arena containing real-time multiplayer Tic-Tac-Toe and circular Battle Ludo with matchmaking and password lock lobbies.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
